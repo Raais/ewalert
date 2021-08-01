@@ -8,3 +8,9 @@ A simple bash script to notify major earthquakes from [USGS](https://earthquake.
 
 * [libnotify](https://github.com/GNOME/libnotify) ([check if your DE already has libnotify built-in](https://wiki.archlinux.org/title/Desktop_notifications#Libnotify))
 * [jq](https://stedolan.github.io/jq/download/)
+
+## Installation
+
+Download bash script and make executable
+`curl 'https://raw.githubusercontent.com/Raais/ewalert/main/ewalert' -o ~/.local/ewalert`
+`sudo chmod +x ~/.local/ewalert`
