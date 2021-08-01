@@ -1,0 +1,29 @@
+#!/bin/bash
+
+#Fetch significant earthquakes data (https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php)
+#Past hour
+url="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_hour.geojson"
+resp=$(curl -s "$url" | jq '.')
+rescount=$(jq '.metadata.count' <<< "$resp")
+cache=~/.cache/ewcache
+
+if [ "$rescount" -gt 0 ]
+then
+    for (( c=0; c<"$rescount"; c++ ))
+    do
+        title=$(curl -s "$url" | jq -r ".features[$c].properties.title")
+        code=$(curl -s "$url" | jq -r ".features[$c].properties.code")
+        timest=$(date -d @"$(curl -s "$url" | jq -r ".features[$c].properties.time")" +%X)
+        if [ -f "$cache" ]; then
+            if ! grep -Fxq "$code" $cache; then
+                #Ignore if already alerted
+                notify-send "Earthquake Warning" "$title\n$timest" --urgency=critical --icon=dialog-warning
+                echo $code >> $cache
+            fi
+        else
+            #First run
+            notify-send "Earthquake Warning" "$title\n$timest" --urgency=critical --icon=dialog-warning
+            echo $code >> $cache
+        fi
+    done
+fi
