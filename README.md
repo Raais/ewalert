@@ -12,5 +12,5 @@ A simple bash script to notify major earthquakes from [USGS](https://earthquake.
 ## Installation
 
 Download bash script and make executable
-`curl 'https://raw.githubusercontent.com/Raais/ewalert/main/ewalert' -o ~/.local/ewalert`
-`sudo chmod +x ~/.local/ewalert`
+```curl 'https://raw.githubusercontent.com/Raais/ewalert/main/ewalert' -o ~/.local/bin/ewalert```
+```sudo chmod +x ~/.local/bin/ewalert```
