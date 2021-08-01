@@ -29,3 +29,4 @@ crontab -e
 #run every 10 minutes
 */10 * * * * ~/.local/bin/ewalert
 ```
+[USGS Real-time GeoJSON Feeds](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php) are updated every minute, so you can choose any interval higher than that. The script will not repeat alerts.
