@@ -19,3 +19,13 @@ curl 'https://raw.githubusercontent.com/Raais/ewalert/main/ewalert' -o ~/.local/
 ```bash
 sudo chmod +x ~/.local/bin/ewalert
 ```
+## Make script run every x minutes
+
+# Example (cron)
+```bash
+crontab -e
+```
+```bash
+#run every 10 minutes
+*/10 * * * * ~/.local/bin/ewalert
+```
