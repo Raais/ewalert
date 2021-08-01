@@ -6,5 +6,5 @@ A simple bash script to notify major earthquakes from [USGS](https://earthquake.
 
 ## Dependecies
 
-* [libnotify](https://github.com/GNOME/libnotify) - [already built-in on most DEs](https://wiki.archlinux.org/title/Desktop_notifications#Libnotify)
+* [libnotify](https://github.com/GNOME/libnotify) ([already built-in on most DEs](https://wiki.archlinux.org/title/Desktop_notifications#Libnotify))
 * [jq](https://stedolan.github.io/jq/download/)
