@@ -21,7 +21,7 @@ sudo chmod +x ~/.local/bin/ewalert
 ```
 ## Make script run every x minutes
 
-# Example (cron)
+### Example (cron)
 ```bash
 crontab -e
 ```
