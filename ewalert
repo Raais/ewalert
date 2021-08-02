@@ -1,6 +1,6 @@
 #!/bin/bash
 
-###Uncomment according to your current session
+###Uncomment > session=" " < according to your current session
 ###Ubuntu Gnome###
 #session="gnome-session"
 ###Ubuntu MATE###
@@ -15,6 +15,7 @@
 ###More: ls /usr/bin/*session
 
 if [ ! -v DBUS_SESSION_BUS_ADDRESS ]; then
+  #Exporting DBUS_SESSION_BUS_ADDRESS variable for cron (libnotify)
   pid=$(pgrep -u $LOGNAME $session)
   eval "export $(\grep -z DBUS_SESSION_BUS_ADDRESS /proc/$pid/environ)"
 fi
@@ -34,8 +35,8 @@ then
         code=$(curl -s "$url" | jq -r ".features[$c].properties.code")
         timest=$(date -d @"$(curl -s "$url" | jq -r ".features[$c].properties.time")" +%X)
         if [ -f "$cache" ]; then
+            #Ignoring if already alerted
             if ! grep -Fxq "$code" $cache; then
-                #Ignore if already alerted
                 notify-send "Earthquake Warning" "$title\n$timest" --urgency=critical --icon=dialog-warning
                 echo $code >> $cache
             fi
