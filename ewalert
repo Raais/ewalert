@@ -1,15 +1,15 @@
 #!/bin/bash
 
-###Uncomment > session="" < according to your current session
-###Ubuntu/GNOME###
+### Uncomment >>> session="" <<< according to your current session
+### Ubuntu/GNOME ###
 #session="gnome-session"
-###Ubuntu/MATE###
+### Ubuntu/MATE ###
 #session="mate-session"
-###XFCE###
+### XFCE ###
 #session="xfce4-session"
-###LXDE###
+### LXDE ###
 #session="lxsession"
-###Cinnamon###
+### Cinnamon ###
 #session="cinnamon-session"
 
 ###Others: ls /usr/bin/*session
