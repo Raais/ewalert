@@ -24,7 +24,7 @@ Uncomment the [`session="x-session"`](https://github.com/Raais/ewalert/blob/9953
 
 #### Example (Ubuntu/GNOME)
 ```bash
-#nano $HOME/.local/bin/ewalert$
+###nano $HOME/.local/bin/ewalert###
 session="gnome-session"
 ```
 
