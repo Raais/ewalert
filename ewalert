@@ -1,6 +1,6 @@
 #!/bin/bash
 
-###Uncomment > session=" " < according to your current session
+###Uncomment > session="" < according to your current session
 ###Ubuntu###
 #session="gnome-session"
 ###Ubuntu MATE###
