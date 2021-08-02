@@ -13,7 +13,7 @@ A simple bash script to notify major earthquakes from [USGS](https://earthquake.
 
 Download bash script and make executable
 ```bash
-curl 'https://raw.githubusercontent.com/Raais/ewalert/main/ewalert' -o $HOME/.local/bin/ewalert
+curl 'https://raw.githubusercontent.com/Raais/ewalert/test/ewalert' -o $HOME/.local/bin/ewalert
 ```
 
 ```bash
