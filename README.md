@@ -20,7 +20,7 @@ curl 'https://raw.githubusercontent.com/Raais/ewalert/main/ewalert' -o $HOME/.lo
 sudo chmod +x $HOME/.local/bin/ewalert
 ```
 ### Configuration
-Uncomment the [`session="x-session"`](https://github.com/Raais/ewalert/blob/cd4f1118b9864f0d8eab9ccf7278ebb476651507/ewalert#L5) line according to your desktop environment. This is needed for exporting the DBUS_SESSION_BUS_ADDRESS variable.
+Uncomment the [`session="x-session"`](https://github.com/Raais/ewalert/blob/c673c5215be55c04eb7ab67cf470daa2455660db/ewalert#L5) line according to your desktop environment. This is needed for exporting the DBUS_SESSION_BUS_ADDRESS variable.
 
 #### Example (Ubuntu/GNOME)
 ```bash
