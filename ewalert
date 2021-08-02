@@ -2,11 +2,11 @@
 
 ###   Uncomment >>> session="" <<< according to your current session    ###
 
-#session="gnome-session" ##        Ubuntu/GNOME
-#session="mate-session" ##         Ubuntu/MATE
-#session="xfce4-session" ##        XFCE
-#session="lxsession" ##            LXDE
-#session="cinnamon-session" ##     Cinammon
+#session="gnome-session" #          Ubuntu/GNOME
+#session="mate-session" #           Ubuntu/MATE
+#session="xfce4-session" #          XFCE
+#session="lxsession" #              LXDE
+#session="cinnamon-session" #       Cinammon
 
 ### Others: ls /usr/bin/*session ###
 
