@@ -1,9 +1,9 @@
 #!/bin/bash
 
 ###Uncomment > session="" < according to your current session
-###Ubuntu###
+###Ubuntu/GNOME###
 #session="gnome-session"
-###Ubuntu MATE###
+###Ubuntu/MATE###
 #session="mate-session"
 ###XFCE###
 #session="xfce4-session"
