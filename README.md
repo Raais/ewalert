@@ -30,9 +30,9 @@ nano $HOME/.local/bin/ewalert
 session="gnome-session"
 ```
 
-## Make script run every x minutes
+### Make script run every x minutes
 
-### Example (cron)
+#### Example (cron)
 ```bash
 crontab -e
 ```
