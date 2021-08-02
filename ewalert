@@ -12,7 +12,7 @@
 ### Cinnamon ###
 #session="cinnamon-session"
 
-### Others: ls /usr/bin/*session
+### Others: ls /usr/bin/*session ###
 
 if [ ! -v DBUS_SESSION_BUS_ADDRESS ]; then
   #Exporting DBUS_SESSION_BUS_ADDRESS variable for cron (libnotify)
