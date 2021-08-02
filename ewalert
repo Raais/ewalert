@@ -10,10 +10,24 @@
 
 ### Others: ls /usr/bin/*session ###
 
+cache=$HOME/.cache/ewcache
+
 if [ ! -v DBUS_SESSION_BUS_ADDRESS ]; then
   #Exporting DBUS_SESSION_BUS_ADDRESS variable for cron (libnotify)
   pid=$(pgrep -u $LOGNAME $session | head -1)
   eval "export $(\grep -z DBUS_SESSION_BUS_ADDRESS /proc/$pid/environ | tr '\0' '\n')"
+fi
+
+if [ "$1" = "-t" ]; then
+  #Test if it works in shell and cron: ewalert -t
+  notify-send "Earthquake Warning" "Just a test :)" --urgency=critical --icon=dialog-warning
+  exit 1
+fi
+
+if [ "$1" = "-x" ]; then
+  #Clear cache
+  rm -f -- $cache
+  exit 1
 fi
 
 #Fetch significant earthquakes data (https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php)
@@ -21,7 +35,6 @@ fi
 url="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_hour.geojson"
 resp=$(curl -s "$url" | jq '.')
 rescount=$(jq '.metadata.count' <<< "$resp")
-cache=$HOME/.cache/ewcache
 
 if [ "$rescount" -gt 0 ]
 then
