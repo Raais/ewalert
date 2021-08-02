@@ -1,5 +1,24 @@
 #!/bin/bash
 
+###Uncomment according to your current session
+###Ubuntu Gnome###
+#session="gnome-session"
+###Ubuntu MATE###
+#session="mate-session"
+###XFCE###
+#session="xfce4-session"
+###LXDE###
+#session="lxsession"
+###Cinnamon###
+#session="cinnamon-session"
+
+###More: ls /usr/bin/*session
+
+if [ ! -v DBUS_SESSION_BUS_ADDRESS ]; then
+  pid=$(pgrep -u $LOGNAME $session)
+  eval "export $(\grep -z DBUS_SESSION_BUS_ADDRESS /proc/$pid/environ)"
+fi
+
 #Fetch significant earthquakes data (https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php)
 #Past hour
 url="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_hour.geojson"
