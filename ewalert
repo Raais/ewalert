@@ -2,6 +2,10 @@
 
 cache=$HOME/.cache/ewcache
 
+#Troubleshooting
+#DISPLAY=:0.0
+#XAUTHORITY=$HOME/.Xauthority
+
 if [ ! -v DBUS_SESSION_BUS_ADDRESS ]; then
   #Exporting DBUS_SESSION_BUS_ADDRESS variable for cron (libnotify)
   pid=$(id -u $LOGNAME)
