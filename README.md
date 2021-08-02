@@ -19,15 +19,6 @@ curl 'https://raw.githubusercontent.com/Raais/ewalert/main/ewalert' -o $HOME/.lo
 ```bash
 sudo chmod +x $HOME/.local/bin/ewalert
 ```
-### Configuration
-Uncomment the [`session="x-session"`](https://github.com/Raais/ewalert/blob/cd4f1118b9864f0d8eab9ccf7278ebb476651507/ewalert#L5) line according to your desktop environment. This is needed for exporting the DBUS_SESSION_BUS_ADDRESS variable.
-
-#### Example (Ubuntu/GNOME)
-```bash
-### nano $HOME/.local/bin/ewalert ###
-session="gnome-session"
-```
-
 ### Make script run every x minutes
 
 #### Example (cron)
