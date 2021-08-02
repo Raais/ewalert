@@ -1,18 +1,8 @@
 #!/bin/bash
 
-###   Uncomment >>> session="" <<< according to your current session    ###
-
-#session="gnome-session" #          Ubuntu/GNOME
-#session="mate-session" #           Ubuntu/MATE
-#session="xfce4-session" #          XFCE
-#session="lxsession" #              LXDE
-#session="cinnamon-session" #       Cinammon
-
-### Others: ls /usr/bin/*session ###
-
 if [ ! -v DBUS_SESSION_BUS_ADDRESS ]; then
   #Exporting DBUS_SESSION_BUS_ADDRESS variable for cron (libnotify)
-  pid=$(pgrep -u $LOGNAME $session | head -1)
+  pid=$(id -u $LOGNAME)
   eval "export $(\grep -z DBUS_SESSION_BUS_ADDRESS /proc/$pid/environ | tr '\0' '\n')"
 fi
 
