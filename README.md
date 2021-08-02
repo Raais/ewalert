@@ -13,14 +13,22 @@ A simple bash script to notify major earthquakes from [USGS](https://earthquake.
 
 Download bash script and make executable
 ```bash
-curl 'https://raw.githubusercontent.com/Raais/ewalert/main/ewalert' -o ~/.local/bin/ewalert
+curl 'https://raw.githubusercontent.com/Raais/ewalert/main/ewalert' -o $HOME/.local/bin/ewalert
 ```
 
 ```bash
-sudo chmod +x ~/.local/bin/ewalert
+sudo chmod +x $HOME/.local/bin/ewalert
 ```
 ### Configuration
 Uncomment the [`session="x-session"`](https://github.com/Raais/ewalert/blob/9953fe78c3b82de1fb5fa43814edd843ad61aea6/ewalert#L5) line according to your desktop environment. This is needed for exporting the DBUS_SESSION_BUS_ADDRESS variable.
+
+#### Example (Ubuntu)
+```bash
+nano $HOME/.local/bin/ewalert
+```
+```bash
+session="gnome-session"
+```
 
 ## Make script run every x minutes
 
@@ -30,7 +38,7 @@ crontab -e
 ```
 ```bash
 #run every 10 minutes
-*/10 * * * * ~/.local/bin/ewalert
+*/10 * * * * $HOME/.local/bin/ewalert
 ```
 [USGS Real-time GeoJSON Feeds](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php) are updated every minute, so you can choose any interval higher than that. The script will not repeat alerts.
 
