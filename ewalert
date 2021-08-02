@@ -25,7 +25,7 @@ fi
 url="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_hour.geojson"
 resp=$(curl -s "$url" | jq '.')
 rescount=$(jq '.metadata.count' <<< "$resp")
-cache=~/.cache/ewcache
+cache=$HOME/.cache/ewcache
 
 if [ "$rescount" -gt 0 ]
 then
