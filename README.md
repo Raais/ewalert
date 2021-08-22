@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/64605172/127781027-ca663461-e1dc-42ba-b231-eceb170097c0.png" alt="just a test">
+  <img src="https://user-images.githubusercontent.com/64605172/130371389-182b7c08-d6ad-4069-8e03-18cb472e6ce0.png">
 </p>
 
 A simple bash script to notify major earthquakes from [USGS](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_hour.geojson). <sub><sup>[[What counts as a significant earthquake?]](https://earthquake.usgs.gov/earthquakes/browse/significant.php#sigdef)</sup></sub>
