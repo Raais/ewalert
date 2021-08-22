@@ -24,6 +24,32 @@ if [ "$1" = "-x" ]; then
   exit 1
 fi
 
+#Timestamp to relative time
+time_ago() {
+  local minutes=60
+  local hours=$(( 60 * minutes ))
+  local days=$(( 24 * hours ))
+  local diff=$(( ${2:-$(date +%s)} - $1 ))
+  local rel
+  if (( diff < 30 )); then
+    rel="${diff} seconds"
+  elif (( diff < 90 )); then
+    rel="1 minute"
+  elif (( diff < 1 * hours )); then
+    rel="$(( (diff + minutes / 2) / minutes )) minutes"
+  elif (( diff < 1 * hours + 30 * minutes )); then
+    rel="about 1 hour"
+  elif (( diff < 1 * days )); then
+    rel="about $(( (diff + hours / 2) / hours )) hours"
+  elif (( diff < 2 * days)); then
+    rel="1 day"
+  else
+    rel="$(( (diff + days / 2) / days)) days"
+  fi
+
+  echo "${rel} ago"
+}
+
 #Fetch significant earthquakes data (https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php)
 #Past hour
 url="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_hour.geojson"
@@ -36,16 +62,19 @@ then
     do
         title=$(curl -s "$url" | jq -r ".features[$c].properties.title")
         code=$(curl -s "$url" | jq -r ".features[$c].properties.code")
-        timest=$(date -d @"$(curl -s "$url" | jq -r ".features[$c].properties.time")" +%X)
+        timest=$(curl -s "$url" | jq -r ".features[$c].properties.time")
+        timest=$(($timest / 1000))
+        timerel=$(time_ago $timest)
+        timev=$(date -d @"$(curl -s "$url" | jq -r ".features[$c].properties.time")" +%X)
         if [ -f "$cache" ]; then
             #Ignoring if already alerted
             if ! grep -Fxq "$code" $cache; then
-                notify-send "Earthquake Warning" "$title\n$timest" --urgency=critical --icon=dialog-warning
+                notify-send "Earthquake Warning" "$title\n$timev ($timerel)" --urgency=critical --icon=dialog-warning
                 echo $code >> $cache
             fi
         else
             #First run
-            notify-send "Earthquake Warning" "$title\n$timest" --urgency=critical --icon=dialog-warning
+            notify-send "Earthquake Warning" "$title\n$timev ($timerel)" --urgency=critical --icon=dialog-warning
             echo $code >> $cache
         fi
     done
